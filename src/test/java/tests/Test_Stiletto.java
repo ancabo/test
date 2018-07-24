@@ -35,6 +35,8 @@ public class Test_Stiletto extends TestBase{
 	key.remove();
     check.checkCart();
     check.check_messageCart();
+    cart.clickContinuebutton().clickPantofi();
+    
 	}
 }	
 

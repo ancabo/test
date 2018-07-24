@@ -96,9 +96,9 @@ public class HomePageStiletto extends TestBase {
 		driver_Switch(pantof_frame);
 		return this;
 	}
-	public HomePageStiletto clickPantofi() {
+	public DetailsStiletto clickPantofi() {
 	click(pantofi);
-	return this;
+	return new DetailsStiletto(driver);
 	}
 	public String getTextcheck() {
 	 String text=  checkmessage.getText();

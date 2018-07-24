@@ -28,6 +28,11 @@ public class Cart extends TestBase {
 		  
     @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/span")
 	   private WebElement emptymessage; 
+    
+  //*[@id="root"]/div/div/div/div/div[1]/div/div/div/div[3]/div/a
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/div/a")
+	   private WebElement continueButton; 
 	
 
 
@@ -70,7 +75,11 @@ public class Cart extends TestBase {
 		   String text = emptymessage.getText();
 			return text;
 			}
-
+	
+	public HomePageStiletto clickContinuebutton () {
+		click(continueButton);
+	    return new HomePageStiletto(driver) ;
+			}
 	
 	
 	

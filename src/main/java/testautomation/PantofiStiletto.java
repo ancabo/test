@@ -195,7 +195,8 @@ public class PantofiStiletto extends TestBase {
 	public void waitAjaxIsLoaded() {
 		WebDriverWait waitAjx = new WebDriverWait(driver, 30);
 		waitAjx.until(ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";"));
-	} 
+	}
+
 	@Test
 	public void testPantofi() throws InterruptedException
 	{

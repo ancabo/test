@@ -12,6 +12,8 @@ public class Cart extends TestBase {
 		this.driver= driver;
 		PageFactory.initElements(driver, this); 	
 		}
+	
+	
 ///////// Elements////////////////
 	
 	@FindBy(xpath="//div[@id='q14ikinlineContent']//iframe[@title='Cart Page'] ")
@@ -29,13 +31,41 @@ public class Cart extends TestBase {
     @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/span")
 	   private WebElement emptymessage; 
     
-  //*[@id="root"]/div/div/div/div/div[1]/div/div/div/div[3]/div/a
-    
     @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/div/a")
 	   private WebElement continueButton; 
 	
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[2]/div/button")
+	   private WebElement clickAddNote; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[2]/div/button/span")
+	   private WebElement checkbuttonAddNote; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[1]/div/button/span")
+	   private WebElement checkPromoCode; 
+    
+    @FindBy(xpath="//*[contains(text(),'Enter a promo code')]")
+	   private WebElement clickPromoCode; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[2]/div/div/div/div[1]/textarea")
+	private WebElement note; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[1]/div/div/form/div/div[1]/div/div/input")
+	private WebElement writepromocode; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[2]/div[1]/section/div[1]/div/div/form/div/div[2]/button/div")
+   	private WebElement clickApplyPromo; 
+    
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/section/div/div[2]/div/div[2]/button/div")
+	private WebElement checkmessagePay; 
+    
+    /*@FindBy(xpath="//*[@id=\\\"root\\\"]/div/div/div/div/section/div/div[2]/div/div[2]/button")
+	private WebElement clickPayPal; */
+    
+    @FindBy(xpath="//*[contains(text(),'title')]")
+	private WebElement checkout;
+	
 
-
+ 
 ///////// Actions////////////////
 	public Cart clickRemove() {
 		  click(remove);
@@ -81,7 +111,59 @@ public class Cart extends TestBase {
 	    return new HomePageStiletto(driver) ;
 			}
 	
+	public Cart clickAddNote() {
+		click(clickAddNote);
+	    return this ;
+			}
 	
+	public String getTextAddNote () {
+		   String text = checkbuttonAddNote.getText();
+			return text;
+			}
 	
+	public Cart checkPromoCode() {
+		click(checkPromoCode);
+	    return this ;
+			}
+	
+	public String getTextPromoCode () {
+		   String text = checkPromoCode.getText();
+			return text;
+			}
+	
+	public Cart clickPromoCode() {
+		click(clickPromoCode);
+	    return this ;
+	}
+	
+	public Cart sendNote() {
+		 sendKeys(note, "Colour 2");
+		  return this;
+		}
+	
+	public Cart writePromo() {
+		 sendKeys(writepromocode, "123456789");
+		  return this;
+		}
+	
+	public Cart clickApplyPromo() {
+		click(clickApplyPromo);
+	    return this ;
+			}
+	
+	public String getTextcheckPay() {
+		 String text=  checkmessagePay.getText();
+			return text;
+			}
+	
+	/*public Cart clickPayPal() {
+		click(clickPayPal);
+	    return this ;
+			}*/
+	
+	public String getMessageTitle () {
+		   String text = checkout.getText();
+			return text;
+			}
 	
 }

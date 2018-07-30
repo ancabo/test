@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+//import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,7 +27,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-import testautomation.PantofiStiletto.Identifier;
+//import testautomation.PantofiStiletto.Identifier;
 
 
 public class TestBase {
@@ -108,7 +108,8 @@ public class TestBase {
 		}
 	}
 	
-//////////Reporting Methods/////////
+	//////////Reporting Methods/////////
+	
 	public void statusPass(String msg) {
 	test.log(Status.PASS, msg);
 	}
@@ -225,26 +226,10 @@ public class TestBase {
 	    }
      }
 	
+
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/////____________
+	//////////////////
 	@Test
 	public void testGoToGoogle() throws InterruptedException {
 		driver.get("https://www.google.ro/");

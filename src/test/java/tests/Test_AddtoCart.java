@@ -1,7 +1,5 @@
 package tests;
 
-
-//import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -13,7 +11,7 @@ import testautomation.KeyWord;
 import testautomation.TestBase;
 
 
-public class Test_Stiletto extends TestBase{
+public class Test_AddtoCart extends TestBase {
 	HomePageStiletto homePageStiletto;
 	DetailsStiletto  detailsStiletto;
 	Cart cart;
@@ -22,23 +20,14 @@ public class Test_Stiletto extends TestBase{
 	
 	@BeforeMethod
 	public void beforeMTD() {
-		homePageStiletto = new HomePageStiletto(driver);
-		detailsStiletto  = new DetailsStiletto(driver);
-		cart = new Cart(driver);
 		key = new KeyWord(driver);
 		check= new CheckKey(driver);
 		}
-	
-	@Test
-	public void test() throws InterruptedException{
-	key.fillContact();
-	key.addProduct();
-	key.remove();
-    check.checkCart();
-    check.check_messageCart();
-    cart.clickContinuebutton().clickPantofi(); 
-	}
-	
-	
-}
 
+	@Test
+	public void testAddtoCart() throws InterruptedException{
+	 key.addProduct();
+    check.checkAddtoCart();
+    check.check_ProductInfo();
+	}
+}

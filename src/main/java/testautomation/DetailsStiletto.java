@@ -48,13 +48,28 @@ public class DetailsStiletto extends TestBase {
 	
    @FindBy(xpath=" //div[@id='q14ikinlineContent']//iframe[@title='Cart Page']")
    private WebElement cart_frame; 
-	
   
    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/span")
    private WebElement emptymessage; 
-
-
+   
+   @FindBy(xpath="//*[@class='button-primary is-button-wide button-add-to-cart']")
+   private WebElement checkbutton; 
+   
+   @FindBy(xpath="/html/body/product-page/div/section/div/div[2]/social-networks/ul/li[1]/a")
+	private WebElement buttonFacebook; 
+   
+   /*@FindBy(xpath="//*[@id=\"facebook\"]")
+	private WebElement paginanouaFacebook; */
+   
 	
+  /* @FindBy(xpath="//*[@id=\"content-zone\"]")
+  	private WebElement driverSwitchtoFacebook; 
+	
+   @FindBy(xpath="//*[@id=\"portlet_windows\"]/div[3]/form/div[2]/a/span/span")
+ 	private WebElement clickLogin; */
+   
+   
+   
 	
 	
 //////////////Actions ///////////
@@ -62,14 +77,17 @@ public class DetailsStiletto extends TestBase {
 		  click(size);
 		  return this;
 		}
+	
 	public DetailsStiletto clickSelectSize() {
 		  click(select_size);
 		  return this;
 		}
+	
 	public DetailsStiletto clickColour() {
 		  click(colour);
 		  return this;
 		}
+	
 	public DetailsStiletto clickSelectColour() {
 		  click(select_colour);
 		  return this;
@@ -79,6 +97,7 @@ public class DetailsStiletto extends TestBase {
 		  click(quantity);
 		  return this;
 		}
+	
 	public DetailsStiletto clear_Quantity() {
 		  clear_Field(quantity);
 		  return this;
@@ -88,14 +107,17 @@ public class DetailsStiletto extends TestBase {
 		 sendKeys(quantity, "2");
 		  return this;
 		}
+	
 	public DetailsStiletto clickAdd() {	
 		click(add_toCart);
 		return this;
 	    }
+	
 	public DetailsStiletto driverrSwitch() {
 		driver_Switch(frame_meniu);
 		return this;
 	}
+	
 	public DetailsStiletto clickViewCart() {
 		  click(viewCart);
 		  return this;
@@ -105,14 +127,47 @@ public class DetailsStiletto extends TestBase {
 		driver_Switch(frame_cart);
 		return this;
 	   }
+	
 	public DetailsStiletto wait_frame() throws InterruptedException {
 		waait(viewCart,"/html/body/cart-popup/div[2]/footer/a ");
 		return this; 	
 		}
+	
 	public DetailsStiletto wait_viewcart() throws InterruptedException {
 		waitt(viewCart);
 		return this; 	
 	}
+	
+	public String getTextAddCart () {
+		   String text = checkbutton.getText();
+			return text;
+			}
+	
+	public DetailsStiletto wait_checkAdd() throws InterruptedException {
+		waitt(checkbutton);
+		return this; 	
+	}
+	
+	public DetailsStiletto clickFacebook() {
+		  click(buttonFacebook);
+		  return this;
+		}
+	
+	/*public DetailsStiletto waitPaginaNoua() {
+		  click(paginanouaFacebook);
+		  return this;
+		}*/
+	
+	/*public DetailsStiletto driverSwitchToFacebook() {
+		driver_Switch(driverSwitchtoFacebook);
+		return this;
+	}
+	
+	public DetailsStiletto clickLoginSiemens() {
+		  click(clickLogin);
+		  return this;
+		}*/
+	
 	
 }
 

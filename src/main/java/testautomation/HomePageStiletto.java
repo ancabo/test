@@ -51,7 +51,23 @@ public class HomePageStiletto extends TestBase {
 	@FindBy(xpath="//*[@id='comp-jj67gh16notifications']")
 	private WebElement checkmessage; 
 	
+	@FindBy(xpath="//*[@id='comp-jj67gh16notifications']")
+	private WebElement email_message; 
 	
+	@FindBy(xpath="//*[@id='comp-jj67gh16notifications']")
+	private WebElement phone_message; 
+	
+	@FindBy(xpath="//*[@id='comp-jj67gh16notifications']")
+	private WebElement mandatory_message;
+	
+	@FindBy(xpath="//*[@id=\"comp-jj67g6ye2label\"]")
+	private WebElement bookOnline_button;
+	
+	@FindBy(id="comp-jj67g6ye")
+	private WebElement frame_bookpage;
+	
+	
+
 	
 	//////////////  Actions ///////////
 	public HomePageStiletto sendName( String value) {
@@ -89,22 +105,59 @@ public class HomePageStiletto extends TestBase {
 		return this;
 	}
 	public HomePageStiletto clickSend() {
-	  click(send);
-	  return this;
+		click(send);
+		return this;
 	}
 	public HomePageStiletto driverSwitch() {
 		driver_Switch(pantof_frame);
 		return this;
 	}
 	public DetailsStiletto clickPantofi() {
-	click(pantofi);
-	return new DetailsStiletto(driver);
+		click(pantofi);
+		return new DetailsStiletto(driver);
 	}
 	public String getTextcheck() {
-	 String text=  checkmessage.getText();
+		String text=  checkmessage.getText();
 		return text;
-		}
+	}
+	public String getMessageEmail() {
+		String text=  email_message.getText();
+		return text;
+	}
+	public String getMessagePhone() {
+		 String text=  phone_message.getText();
+		 return text;
+	}
+	public String getMessageMandatory() {
+		 String text= mandatory_message.getText();
+		 return text;
+	}
+	public HomePageStiletto clickBookOnline() {
+		click(bookOnline_button);
+		return this;
+	}
+	
+	public HomePageStiletto driverSwitchBook() {
+		driver_Switch(frame_bookpage);
+		return this;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
+
 
 
 

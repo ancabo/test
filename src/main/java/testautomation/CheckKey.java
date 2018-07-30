@@ -11,6 +11,8 @@ public class CheckKey extends TestBase{
 	DetailsStiletto  detailsStiletto = new DetailsStiletto(driver);
 	Cart cart= new Cart(driver);
 	SoftAssert softAssert = new SoftAssert();
+	BookOnline bookOnline = new BookOnline (driver);
+	LoginPage loginpage = new LoginPage(driver);
 	
 	 public  CheckKey( WebDriver driver ) {
 			this.driver= driver;
@@ -18,6 +20,8 @@ public class CheckKey extends TestBase{
 			homePageStiletto = new HomePageStiletto(driver);
 			detailsStiletto = new DetailsStiletto(driver);
 			cart = new Cart(driver);
+			bookOnline= new BookOnline(driver);
+			loginpage = new LoginPage(driver);
 			}
 	
 	
@@ -67,6 +71,135 @@ public class CheckKey extends TestBase{
 		 status("PASS","END OF TEST");
 	 }
 	 
+	 public void checkEmail_invalid() throws InterruptedException {
+			status("PASS","START TEST");
+			gotoUrl("https://ancabota09.wixsite.com/internship");
+			maximize();
+			homePageStiletto.sendName("Dodea Roxana")
+				.sendEmail("roxana25@com")
+				.sendPhone("0757352929")
+				.sendAddress("Strada Principala nr 680B")
+				.sendSubject("Pantofi")
+				.sendMessage("Marimile corespund?")
+			    .clickSend();
+			Thread.sleep(2000);
+		    String CheckMessageEmail = homePageStiletto.getMessageEmail();
+		   softAssert.assertTrue(CheckMessageEmail.contains("Please provide a valid email"), "Verification Failed: Message is missing!");
+		    status("PASS","Message: Please provide a valid email");
+		    homePageStiletto.driverSwitch();
+			default_content();
+		   softAssert.assertAll();
+		  status("PASS","END OF TEST");
+			 }	
+	 public void verifyInvalid_phone() throws InterruptedException {
+			gotoUrl("https://ancabota09.wixsite.com/internship");
+			maximize();
+			homePageStiletto.sendName("Dodea Roxana")
+				.sendEmail("roxanaioana2597@gmail.com")
+				.sendPhone("0757??abcds_=")
+				.sendAddress("Strada Principala nr 680B")
+				.sendSubject("Pantofi")
+				.sendMessage("Marimile corespund?")
+			    .clickSend();
+			Thread.sleep(2000);
+			String expected_message = "Please provide a valid phone";
+			String actual_message =homePageStiletto.getMessagePhone();
+			try {
+				Assert.assertEquals(actual_message, expected_message);
+				status("PASS","Numeric field PHONE doesn't accept ALPHABETS and CHARACTERS!");
+			}catch(AssertionError e) {
+				status("FAIL","Numeric field PHONE accept ALPHABETS and CHARACTERS!");
+			}
+	 }
+			public void check_Mandatoryfields() throws InterruptedException {
+				gotoUrl("https://ancabota09.wixsite.com/internship");
+				maximize();
+				homePageStiletto.clickSend();
+				//verificam daca atunci cand nu completam cu date apare mesajul pentru campurile care trebuie completate obligatoriu
+				String expected_message = "	Please fill in all required fields.";
+				String actual_message =homePageStiletto.getMessagePhone();
+				System.out.println("Stringul este: " + actual_message);
+				try {
+					Assert.assertEquals(actual_message, expected_message);
+					status("PASS","Mandatory fields are visible.");
+				}catch(AssertionError e) {
+					status("FAIL","Mandatory fields are not visible");
+				}
+				sleep();
+				// verificam daca atunci cand introducem emailul valid apare mesajul pentru campurile completate obligatoriu
+				homePageStiletto.sendEmail("roxanaioana2597@gmail.com");
+				homePageStiletto.clickSend();
+				sleep();
+				String actual_messagefields =homePageStiletto.getMessageMandatory();
+				String expected= "Please fill in all required fields.";
+				System.out.println("Stringul este"+ actual_messagefields);
+				try {
+					Assert.assertEquals(actual_messagefields, expected);
+					status("PASS","Mandatory fields are visible and selected!");
+				}catch(AssertionError e) {
+					status("FAIL","Mandatory fields are not visible");
+				}
+			
+			}
+			
+			public void check_BookPage() throws InterruptedException {
+				sleep();
+				bookOnline.driverSwitchb();
+				sleep();
+				String actual_message =bookOnline.getMessageTitle();
+				try {
+					Assert.assertTrue(actual_message.contains("Nothing to book right now. Check back soon."), "Verification Failed: Message is missing!");
+					status("PASS","Welcome!Book Page is displayed.");
+					bookOnline.clickLogIn();
+				}
+				catch(AssertionError e) {
+					status("FAIL","Error:Book Page is missing");
+				}
+				default_content();
+				
+			}
+		   
+			public void check_LoginMessage() throws InterruptedException {
+				sleep();
+			    String actual_message = loginpage.getErrorMessage();
+				try {
+					Assert.assertTrue(actual_message.contains("Wrong email or password"), "Verification Failed: Message is missing!");
+					status("PASS","Message error: Login with wrong password is not working!!");
+				}
+				catch(AssertionError e) {
+					status("FAIL","Login with wrong password is working!!");
+				}
+				
+				
+			}
+			public void check_Reset() throws InterruptedException {
+				sleep();
+			    String actual_message = loginpage.getResetTitle();
+				try {
+					Assert.assertTrue(actual_message.contains("Reset Password"), "Verification Failed: Message is missing!");
+					status("PASS","Reset Page is displayed.");
+					loginpage.sendEmailreset("roxanaioana2597@gmail.com");
+				}
+				catch(AssertionError e) {
+					status("FAIL","Reset Page is missing!");
+				}
+				
+				
+			}
+			public void check_ConfirmPage() throws InterruptedException {
+				sleep();
+			    String actual_message = loginpage.getValidationMessage();
+				try {
+					Assert.assertTrue(actual_message.contains("Please Check Your Email"), "Verification Failed: Message is missing!");
+					status("PASS","Email was sent for reset your password.");
+				    loginpage.clickOK_button();
+				}
+				catch(AssertionError e) {
+					status("FAIL","Reset Page is missing!");
+				}
+				
+				
+			}
+ 
 	 
-		
 }

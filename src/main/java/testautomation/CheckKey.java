@@ -182,9 +182,7 @@ public class CheckKey extends TestBase{
 				}
 				catch(AssertionError e) {
 					status("FAIL","Reset Page is missing!");
-				}
-				
-				
+				}							
 			}
 			public void check_ConfirmPage() throws InterruptedException {
 				sleep();
@@ -196,10 +194,102 @@ public class CheckKey extends TestBase{
 				}
 				catch(AssertionError e) {
 					status("FAIL","Reset Page is missing!");
-				}
-				
-				
+				}			
 			}
+			
+			public void  checkAddtoCart() throws InterruptedException {
+				 sleep();
+				detailsStiletto.driverrSwitch();
+				//detailsStiletto.wait_checkAdd();
+				sleep();
+				 String CheckButton =  detailsStiletto.getTextAddCart(); 
+				 System.out.println("Butonul este pe pagina:" + CheckButton);
+				if (CheckButton.equals("ADD TO CART")) {
+					 status("PASS", "Mesajul apare: ADD TO CART.");
+					} else {
+					 status("FAIL", "Mesajul nu apare.");
+
+					}
+				 default_content();
+				 status("PASS","END OF TEST");
+			 }
+			 //softAssert.assertAll();
+			 
+			 public void  checkAddtNote() throws InterruptedException {
+				 sleep();
+				cart.driverrSwitchCart();
+				sleep();
+				 String CheckAddNote =  cart.getTextAddNote(); 
+				 System.out.println("Butonul este pe pagina:" + CheckAddNote);
+				if (CheckAddNote.equals("Add a note")) {
+					 status("PASS", "Mesajul apare: Add a note.");
+					} else {
+					 status("FAIL", "Mesajul nu apare.");
+
+					}
+				 default_content();
+				 status("PASS","END OF TEST");
+			 }
+			 
+			 
+			 public void  checkPromoCode() throws InterruptedException {
+				 sleep();
+				cart.driverrSwitchCart();
+				sleep();
+				 String CheckPromoCode =  cart.getTextPromoCode(); 
+				 System.out.println("Butonul este pe pagina:" + CheckPromoCode);
+				if (CheckPromoCode.equals("Enter a promo code")) {
+					 status("PASS", "Mesajul apare: Enter a promo code.");
+					} else {
+					 status("FAIL", "Mesajul nu apare.");
+
+					}
+				 default_content();
+				 status("PASS","END OF TEST");
+			 }
+			 
+			 public void  checkPayPal() throws InterruptedException {
+					/*Thread.sleep(2000);
+				    String CheckMessagePayPal = cart.getTextcheckPay();
+				    softAssert.assertTrue(CheckMessagePayPal.contains("Check out with PayPal"), "Details were not successfully");
+					status("PASS", "Mesajul apare.");
+//					if cart.getCheckMessagePayPal().isEnabled() && CheckMessagePayPal.contains("Check out with PayPal")) {
+//						status("PASS", "Mesajul apare.");
+//					}
+//					else {
+//						status("FAIL", "Mesajul nu apare.");
+//					}
+					softAssert.assertAll();
+					}*/
+				 
+				 sleep();
+					cart.driverrSwitchCart();
+					sleep();
+					 String CheckMessagePayPal =  cart.getTextcheckPay(); 
+					 System.out.println("Butonul este pe pagina:" + CheckMessagePayPal);
+					if (CheckMessagePayPal.equals("Check out with PayPal")) {
+						 status("PASS", "Mesajul apare: Check out with PayPal");
+						} else {
+						 status("FAIL", "Mesajul nu apare.");
+
+						}
+					 default_content();
+					 status("PASS","END OF TEST");
+			 } 
+			 
+				public void check_ProductInfo() throws InterruptedException {
+					sleep();
+					cart.driverSwitchCart();
+					sleep();
+					String actual_message =cart.getMessageTitle();
+					try {
+						Assert.assertTrue(actual_message.contains("Checkout"), "Verification Failed: Message is missing!");
+						status("PASS","Checkout is displayed.");
+					}
+					catch(AssertionError e) {
+						status("FAIL","Error:Checkout is missing");
+					}										
+				} 
  
 	 
 }

@@ -75,10 +75,10 @@ public class TestBase {
         extent.flush();
     } 
   
-  // @AfterTest
-	//public void driverStop() {	
-		//driver.quit();
-	//} 
+  @AfterTest
+	public void driverStop() {	
+		driver.quit();
+	} 
 	public void intializeReport() {		
 		htmlReporter = new ExtentHtmlReporter("./Report.html");
 		htmlReporter.config().setDocumentTitle("Test Automation Report");

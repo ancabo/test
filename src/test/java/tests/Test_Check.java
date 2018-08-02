@@ -90,6 +90,7 @@ public class Test_Check extends TestBase{
 	    Assert.assertTrue(check.check_Reset(), "Reset page is not found.");
 	    loginpage.clickGobutton();
 	    Assert.assertTrue(check.check_ConfirmPage(), "Confirm page is not found.");
+	    loginpage.clickOK_button();
 	    status("PASS","END OF TEST");
 	    
 		

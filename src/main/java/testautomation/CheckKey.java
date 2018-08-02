@@ -197,7 +197,6 @@ public class CheckKey extends TestBase{
 			    String actual_message = loginpage.getValidationMessage();
 			    if (actual_message.equals("Please Check Your Email")) {
 			    	status("PASS","Confirm Page is displayed.");
-					loginpage.sendEmailreset("roxanaioana2597@gmail.com");
 					ok=true;
 			        return ok ;
 			    }

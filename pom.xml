@@ -48,9 +48,9 @@
                   <include>**/Test_*.java</include>
                   <include>**/Test_*.java</include>
                </includes>
-               <suiteXmlFiles>
+              <!--   <suiteXmlFiles>
                   <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-               </suiteXmlFiles>
+               </suiteXmlFiles> -->
             </configuration>
          </plugin>
       </plugins>

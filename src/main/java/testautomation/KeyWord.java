@@ -117,6 +117,22 @@ protected WebDriver driver;
         status("PASS","END OF TEST");
 	}
 	
+	public void login_Filldata() throws InterruptedException {
+		sleep();
+		loginpage.sendEmail("roxanaioana2597@gmail.com")
+                 .sendPassword("siemens2018")
+                 .clickLogIn();
+	}
+	
+	public void signup_Filldata() throws InterruptedException {
+		sleep();
+		signup .sendEmail("roxydodea597@yahoo.com")
+		  .sendPassword("siemens2018")
+		  .sendRetypePass("siemens2018")
+		  .clickGo();
+		   sleep();
+	}
+	
 	public void clickFacebook() throws InterruptedException {
 		status("PASS","START TEST");
 		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");

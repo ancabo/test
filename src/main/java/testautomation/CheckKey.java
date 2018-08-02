@@ -142,59 +142,70 @@ public class CheckKey extends TestBase{
 			
 			}
 			
-			public void check_BookPage() throws InterruptedException {
+			public boolean check_BookPage() throws InterruptedException {
 				sleep();
+				boolean ok ;
 				bookOnline.driverSwitchb();
 				sleep();
 				String actual_message =bookOnline.getMessageTitle();
-				try {
-					Assert.assertTrue(actual_message.contains("Nothing to book right now. Check back soon."), "Verification Failed: Message is missing!");
-					status("PASS","Welcome!Book Page is displayed.");
-					bookOnline.clickLogIn();
-				}
-				catch(AssertionError e) {
-					status("FAIL","Error:Book Page is missing");
-				}
-				default_content();
+			    if (actual_message.equals("Nothing to book right now. Check back soon.")) {
+			    	status("PASS","Welcome!Book Page is displayed.");
+			        return ok=true ;
+			    }
+			    else {
+			    	status("FAIL","Error:Book Page is missing");
+			    	return ok=false;
+			    }
 				
 			}
 		   
-			public void check_LoginMessage() throws InterruptedException {
+			public boolean check_LoginMessage() throws InterruptedException {
 				sleep();
+				boolean ok;
 			    String actual_message = loginpage.getErrorMessage();
-				try {
-					Assert.assertTrue(actual_message.contains("Wrong email or password"), "Verification Failed: Message is missing!");
-					status("PASS","Message error: Login with wrong password is not working!!");
-				}
-				catch(AssertionError e) {
-					status("FAIL","Login with wrong password is working!!");
-				}
-				
-				
+			    
+			    if (actual_message.equals("Wrong email or password")) {
+			    	status("PASS","Message error: Login with wrong password is not working!!");
+			    	ok =true;
+			        return ok ;
+			    }
+			    else {
+			    	status("FAIL","Login with wrong password is working!!");
+			    	ok=false;
+			    	return ok;
+			    }		
 			}
-			public void check_Reset() throws InterruptedException {
+			public boolean check_Reset() throws InterruptedException {
 				sleep();
+				boolean ok ;
 			    String actual_message = loginpage.getResetTitle();
-				try {
-					Assert.assertTrue(actual_message.contains("Reset Password"), "Verification Failed: Message is missing!");
-					status("PASS","Reset Page is displayed.");
+			    if (actual_message.equals("Reset Password")) {
+			    	status("PASS","Reset Page is displayed.");
 					loginpage.sendEmailreset("roxanaioana2597@gmail.com");
-				}
-				catch(AssertionError e) {
-					status("FAIL","Reset Page is missing!");
-				}							
+					ok=true;
+			        return ok ;
+			    }
+			    else {
+			    	status("FAIL","Reset Page is missing!");
+			    	ok=false;
+			    	return ok;
+			    }							
 			}
-			public void check_ConfirmPage() throws InterruptedException {
+			public boolean check_ConfirmPage() throws InterruptedException {
 				sleep();
+				boolean ok;
 			    String actual_message = loginpage.getValidationMessage();
-				try {
-					Assert.assertTrue(actual_message.contains("Please Check Your Email"), "Verification Failed: Message is missing!");
-					status("PASS","Email was sent for reset your password.");
-				    loginpage.clickOK_button();
-				}
-				catch(AssertionError e) {
-					status("FAIL","Reset Page is missing!");
-				}			
+			    if (actual_message.equals("Please Check Your Email")) {
+			    	status("PASS","Confirm Page is displayed.");
+					loginpage.sendEmailreset("roxanaioana2597@gmail.com");
+					ok=true;
+			        return ok ;
+			    }
+			    else {
+			    	status("FAIL","Confirm  Page is missing!");
+			    	ok=false;
+			    	return ok;
+			    }		
 			}
 			
 			public void  checkAddtoCart() throws InterruptedException {

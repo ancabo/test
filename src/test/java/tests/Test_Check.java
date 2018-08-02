@@ -1,5 +1,8 @@
 package tests;
 
+import static org.testng.Assert.assertTrue;
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -54,13 +57,54 @@ public class Test_Check extends TestBase{
 
 	@Test 
 	public void test_Account() throws InterruptedException{
-		key.createAccount();
-		
+		status("PASS","START TEST");
+		gotoUrl("https://ancabota09.wixsite.com/internship");
+		maximize();
+		homePageStiletto.clickBookOnline();
+		Assert.assertTrue(check.check_BookPage(), "Error:Book Page is missing");
+		sleep();
+		bookOnline.clickLogIn();
+		default_content();
+		sleep();
+		loginpage.clickSignUp(); 
+		key.signup_Filldata();
+		signup.click_Xbutton();
+	    default_content();
+	    status("PASS","The account has been successfully created!");
+	 
 	}
 	
 	@Test 
 	public void test_LogInAccount() throws InterruptedException{
-	   key.login_Account();
+		status("PASS","START TEST");
+		gotoUrl("https://ancabota09.wixsite.com/internship");
+		maximize();
+		homePageStiletto.clickBookOnline();
+		Assert.assertTrue(check.check_BookPage(), "Error:Book Page is missing");
+		sleep();
+		bookOnline.clickLogIn();
+		default_content();
+	    key.login_Filldata();
+	    Assert.assertTrue(check.check_LoginMessage(), "Verification failed:Login with invalid password is working.");
+	    loginpage.clickForgotPass();
+	    Assert.assertTrue(check.check_Reset(), "Reset page is not found.");
+	    loginpage.clickGobutton();
+	    Assert.assertTrue(check.check_ConfirmPage(), "Confirm page is not found.");
+	    status("PASS","END OF TEST");
+	    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
 		
 	}
 	

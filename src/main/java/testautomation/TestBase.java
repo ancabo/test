@@ -226,11 +226,11 @@ public class TestBase {
 	    }
      }
 	
-
+}
 	
 	
 	//////////////////
-	@Test
+	/*@Test
 	public void testGoToGoogle() throws InterruptedException {
 		driver.get("https://www.google.ro/");
 		driver.manage().window().maximize();
@@ -285,5 +285,5 @@ public class TestBase {
 		// luam cu selenium numarul de telefon al faxului si il afisam in consola
 		// inchidem browserul
 	}
-}
+}*/
 

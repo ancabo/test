@@ -208,97 +208,88 @@ public class CheckKey extends TestBase{
 			    }		
 			}
 			
-			public void  checkAddtoCart() throws InterruptedException {
+			public boolean  checkAddtoCart() throws InterruptedException {
 				 sleep();
+				 boolean ok;
 				detailsStiletto.driverrSwitch();
-				//detailsStiletto.wait_checkAdd();
 				sleep();
 				 String CheckButton =  detailsStiletto.getTextAddCart(); 
 				 System.out.println("Butonul este pe pagina:" + CheckButton);
 				if (CheckButton.equals("ADD TO CART")) {
 					 status("PASS", "Mesajul apare: ADD TO CART.");
+					// System.out.println(" True" + CheckButton);
+					 return ok=true;
 					} else {
-					 status("FAIL", "Mesajul nu apare.");
-
+					status("FAIL", "Mesajul nu apare: ADD TO CART.");
+					 return ok=false;
 					}
-				 default_content();
-				 status("PASS","END OF TEST");
 			 }
-			 //softAssert.assertAll();
 			 
-			 public void  checkAddtNote() throws InterruptedException {
+			public boolean checkAddtNote() throws InterruptedException {
 				 sleep();
+				 boolean ok;
 				cart.driverrSwitchCart();
 				sleep();
 				 String CheckAddNote =  cart.getTextAddNote(); 
 				 System.out.println("Butonul este pe pagina:" + CheckAddNote);
 				if (CheckAddNote.equals("Add a note")) {
 					 status("PASS", "Mesajul apare: Add a note.");
+					 return ok=true; 
 					} else {
 					 status("FAIL", "Mesajul nu apare.");
-
+					 return ok=false;
 					}
-				 default_content();
-				 status("PASS","END OF TEST");
 			 }
 			 
 			 
-			 public void  checkPromoCode() throws InterruptedException {
-				 sleep();
-				cart.driverrSwitchCart();
-				sleep();
-				 String CheckPromoCode =  cart.getTextPromoCode(); 
-				 System.out.println("Butonul este pe pagina:" + CheckPromoCode);
-				if (CheckPromoCode.equals("Enter a promo code")) {
-					 status("PASS", "Mesajul apare: Enter a promo code.");
-					} else {
-					 status("FAIL", "Mesajul nu apare.");
-
-					}
-				 default_content();
-				 status("PASS","END OF TEST");
-			 }
 			 
-			 public void  checkPayPal() throws InterruptedException {
-					/*Thread.sleep(2000);
-				    String CheckMessagePayPal = cart.getTextcheckPay();
-				    softAssert.assertTrue(CheckMessagePayPal.contains("Check out with PayPal"), "Details were not successfully");
-					status("PASS", "Mesajul apare.");
-//					if cart.getCheckMessagePayPal().isEnabled() && CheckMessagePayPal.contains("Check out with PayPal")) {
-//						status("PASS", "Mesajul apare.");
-//					}
-//					else {
-//						status("FAIL", "Mesajul nu apare.");
-//					}
-					softAssert.assertAll();
-					}*/
-				 
-				 sleep();
+			 public boolean  checkPromoCode() throws InterruptedException {
+					sleep();
+					boolean ok;
+					cart.driverrSwitchCart();
+					sleep();
+					 String CheckPromoCode =  cart.getTextPromoCode(); 
+					 System.out.println("Butonul este pe pagina:" + CheckPromoCode);
+					if (CheckPromoCode.equals("Enter a promo code")) {
+						 status("PASS", "Mesajul apare: Enter a promo code.");
+						 return ok=true;
+						} else {
+						 status("FAIL", "Mesajul nu apare.");
+						 return ok=false;
+
+						}
+					 //default_content();
+					// status("PASS","END OF TEST");
+				 }
+			 
+			 public boolean checkPayPal() throws InterruptedException {
+				    sleep();
+				    boolean ok;
 					cart.driverrSwitchCart();
 					sleep();
 					 String CheckMessagePayPal =  cart.getTextcheckPay(); 
 					 System.out.println("Butonul este pe pagina:" + CheckMessagePayPal);
-					if (CheckMessagePayPal.equals("Check out with PayPal")) {
-						 status("PASS", "Mesajul apare: Check out with PayPal");
+					if (CheckMessagePayPal.equals("Check out with")) {
+						 status("PASS", "Mesajul apare: Check out with");
+						 return ok=true; 
 						} else {
 						 status("FAIL", "Mesajul nu apare.");
-
+						 return ok=false;
 						}
-					 default_content();
-					 status("PASS","END OF TEST");
 			 } 
 			 
-				public void check_ProductInfo() throws InterruptedException {
+			 public boolean check_Checkout() throws InterruptedException {
 					sleep();
+					boolean ok;
 					cart.driverSwitchCart();
 					sleep();
 					String actual_message =cart.getMessageTitle();
-					try {
-						Assert.assertTrue(actual_message.contains("Checkout"), "Verification Failed: Message is missing!");
+					if (actual_message.equals("Checkout")){
 						status("PASS","Checkout is displayed.");
-					}
-					catch(AssertionError e) {
+						return ok=true;	
+					} else {
 						status("FAIL","Error:Checkout is missing");
+						return ok=false;
 					}										
 				} 
  

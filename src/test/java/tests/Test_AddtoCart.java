@@ -1,5 +1,8 @@
 package tests;
 
+import static org.testng.Assert.assertTrue;
+
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,8 +29,11 @@ public class Test_AddtoCart extends TestBase {
 
 	@Test
 	public void testAddtoCart() throws InterruptedException{
-	 key.addProduct();
-    check.checkAddtoCart();
-    check.check_ProductInfo();
+	gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+	maximize();
+	key.addProduct();
+	Assert.assertTrue(check.checkAddtoCart(),"Error");
+    //check.check_Checkout();
+    //Assert.assertTrue(check.check_Checkout(),"Verification Failed: Message is missing!");
 	}
 }

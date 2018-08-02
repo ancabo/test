@@ -133,7 +133,7 @@ protected WebDriver driver;
 		   sleep();
 	}
 	
-	public void clickFacebook() throws InterruptedException {
+	/*public void clickFacebook() throws InterruptedException {
 		status("PASS","START TEST");
 		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
 		maximize();
@@ -149,36 +149,29 @@ try {
 //detailsStiletto.driverSwitchToFacebook();
 //detailsStiletto.clickLoginSiemens();
 status("PASS","END OF TEST");
-	} 
+	} */
 	
 	public void addNote() throws InterruptedException {
-		status("PASS","START TEST");
-		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-		maximize();
-	  detailsStiletto.driverrSwitch()
-	                .clickSize()
-	                .clickSelectSize()
-	                .clickColour()
-	                .clickSelectColour()
-	                .clickQuantity()
-	                .clear_Quantity()
-	                .sendQuantity();
-		            sleep();
-     detailsStiletto.clickAdd();
-		            default_content();
-	                sleep();
-      detailsStiletto.driverrrSwitch()
-		            .wait_frame()
-		            .clickViewCart();	
-			         sleep();
-		        cart.driverrSwitchCart();
-			    cart.clickAddNote();
-			        sleep();
-			    cart.sendNote();
-			         default_content();	
-	} 
+		  detailsStiletto.driverrSwitch()
+		                .clickSize()
+		                .clickSelectSize()
+		                .clickColour()
+		                .clickSelectColour()
+		                .clickQuantity()
+		                .clear_Quantity()
+		                .sendQuantity();
+			            sleep();
+	     detailsStiletto.clickAdd();
+			            default_content();
+		                sleep();
+	      detailsStiletto.driverrrSwitch()
+			            .wait_frame()
+			            .clickViewCart();	
+				         sleep();
+			        cart.driverrSwitchCart();	
+		} 
 
-public void promoCode() throws InterruptedException {
+/*public void promoCode() throws InterruptedException {
 		cart.driverSwitchCart()
             .waitt();
 		cart.clickPromoCode();
@@ -187,11 +180,11 @@ public void promoCode() throws InterruptedException {
 		    sleep();
 		cart.clickApplyPromo();
 		    default_content();	
-	}
+	}*/
 	
 	public void payPal() throws InterruptedException {
-		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-		maximize();
+		//gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+		//maximize();
 	  detailsStiletto.driverrSwitch()
 	                .clickSize()
 	                .clickSelectSize()

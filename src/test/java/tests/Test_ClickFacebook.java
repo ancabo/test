@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -11,11 +13,11 @@ import testautomation.KeyWord;
 import testautomation.TestBase;
 
 public class Test_ClickFacebook extends TestBase {
-	HomePageStiletto homePageStiletto;
-	DetailsStiletto  detailsStiletto;
-	Cart cart;
-	KeyWord key;
-	CheckKey check;
+		HomePageStiletto homePageStiletto;
+		DetailsStiletto  detailsStiletto;
+		Cart cart;
+		KeyWord key;
+		CheckKey check;
 
 	 
 	 
@@ -30,8 +32,21 @@ public class Test_ClickFacebook extends TestBase {
 	
 
 	@Test
-	public void testclickFacebook() throws InterruptedException{
-		key.clickFacebook();	
+	public void testclickFacebook() throws InterruptedException{	
+		status("PASS","START TEST");
+		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+		maximize();
+		detailsStiletto.driverrSwitch();
+	    sleep();
+        detailsStiletto.clickFacebook();
+	    sleep();
+		try {
+		     TimeUnit.SECONDS.sleep(10);
+		} catch (InterruptedException e) {
+		    //Handle exception
+		}
+		sleep();
+		status("PASS","END OF TEST");
 	}
 
 }

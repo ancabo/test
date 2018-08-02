@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 //import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,11 +13,11 @@ import testautomation.KeyWord;
 import testautomation.TestBase;
 
 public class Test_MyCart extends TestBase{
-	HomePageStiletto homePageStiletto;
-	DetailsStiletto  detailsStiletto;
-	Cart cart;
-	KeyWord key;
-	CheckKey check;
+			HomePageStiletto homePageStiletto;
+			DetailsStiletto  detailsStiletto;
+			Cart cart;
+			KeyWord key;
+			CheckKey check;
 	
 		@BeforeMethod
 		public void beforeMTD() {
@@ -30,22 +31,41 @@ public class Test_MyCart extends TestBase{
 
 		@Test
 		public void testAddNote() throws InterruptedException{
+			status("PASS","START TEST");
+			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+			maximize();
 			key.addNote();
-			check.checkAddtNote();
+			cart.clickAddNote();
+		    sleep();
+		    cart.sendNote();
+		    default_content();	
+			Assert.assertTrue(check.checkAddtNote(),"Verification Failed: Message is missing!");
 		}
 		
 		
 		@Test
 		public void testPromoCode() throws InterruptedException{
+			status("PASS","START TEST");
+			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+			maximize();
 			key.addNote();
-			key.promoCode();
-			check.checkPromoCode();	
+			sleep();
+            cart.clickPromoCode();
+		    sleep();
+		    cart.writePromo();
+		    sleep();
+		    cart.clickApplyPromo();
+		    default_content();
+			Assert.assertTrue(check.checkPromoCode() ,"Verification Failed: Message is missing!");
 		}
 		
 		@Test
 		public void testPayPal() throws InterruptedException{
+			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
+			maximize();
 			key.payPal();
-			check.checkPayPal();
+			Assert.assertTrue(check.checkPayPal() ,"Verification Failed: Message is missing!");	
+			//Assert.assertTrue(check.check_Checkout(),"Verification Failed: Message is missing!");
 		}
 		
 		

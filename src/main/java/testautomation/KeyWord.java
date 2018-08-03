@@ -13,7 +13,7 @@ protected WebDriver driver;
  LoginPage loginpage = new LoginPage(driver);
  SignUpPage signup = new SignUpPage(driver);
  BookOnline bookOnline = new BookOnline(driver);
- 
+ Hashmap map = new Hashmap();
 	public  KeyWord( WebDriver driver ) {
 		this.driver= driver;
 		PageFactory.initElements(driver, this);
@@ -29,12 +29,13 @@ protected WebDriver driver;
 	public void fillContact() throws InterruptedException {
 		gotoUrl("https://ancabota09.wixsite.com/internship");
 		maximize();
-		homePageStiletto.sendName("Dodea Roxana")
-			.sendEmail("roxanaioana2597@gmail.com")
-			.sendPhone("0757352929")
-			.sendAddress("Strada Principala nr 680B")
-			.sendSubject("Pantofi")
-			.sendMessage("Marimile corespund?");
+		map.add_details();
+		homePageStiletto.sendName(map.hmap.get("Name"))
+			            .sendEmail(map.hmap.get("Email"))
+			            .sendPhone(map.hmap.get("PhoneNumber"))
+			            .sendAddress(map.hmap.get("Address"))
+			            .sendSubject(map.hmap.get("Subject"))
+			            .sendMessage(map.hmap.get("Message"));
 	    }
 	
 	public void addProduct() throws InterruptedException {

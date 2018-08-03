@@ -92,7 +92,6 @@ public class Test_Check extends TestBase{
 	@Test 
 	public void test_LogInAccount() throws InterruptedException{
 		//LogIn Account with invalid password
-		status("PASS","START TEST");
 		key.go_Url();
 		homePageStiletto.clickBookOnline();
 		Assert.assertTrue(check.check_BookPage(), "Error:Book Page is missing");
@@ -106,7 +105,6 @@ public class Test_Check extends TestBase{
 	    loginpage.clickGobutton();
 	    Assert.assertTrue(check.check_ConfirmPage(), "Confirm page is not found.");
 	    loginpage.clickOK_button();
-	    status("PASS","END OF TEST");	
 	}
 	
 }

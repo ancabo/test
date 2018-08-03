@@ -39,12 +39,24 @@ public class Test_Check extends TestBase{
 	
 	@Test 
 	public void test_Email_message() throws InterruptedException{
-		check.checkEmail_invalid();	
+		status("INFO","Start check :)");
+		key.go_Url();
+		key.fillcontact("Dodea Roxana", "roxana25@com","0757352929");
+		homePageStiletto.clickSend();
+		sleep();
+		Assert.assertTrue(check.checkEmail_invalid(), "Error: Message is missing.");
+		status("INFO","End of check!");
 	}	
 	
 	@Test 
 	public void test_Invalid_Phone() throws InterruptedException{
-		check.verifyInvalid_phone();	
+		status("INFO","Start to check :)");
+		key.go_Url();
+		key.fillcontact("Dodea Roxana", "roxanaioana2597@gmail.com","07??frd/&*456");
+		homePageStiletto.clickSend();
+		sleep();
+		Assert.assertTrue(check.check_InvalidPhone(), "Error: Numeric field accept alphabet and characters.");
+		status("INFO","End of check!");
 	}
 
 	@Test 

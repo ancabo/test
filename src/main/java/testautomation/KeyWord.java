@@ -1,7 +1,5 @@
 package testautomation;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -36,14 +34,9 @@ protected WebDriver driver;
 			.sendPhone("0757352929")
 			.sendAddress("Strada Principala nr 680B")
 			.sendSubject("Pantofi")
-			.sendMessage("Marimile corespund?")
-		    .clickSend();
-		  check.checkContact();
-		  homePageStiletto.driverSwitch()
-		                  .clickPantofi();
-		default_content();
-		
-	}
+			.sendMessage("Marimile corespund?");
+	    }
+	
 	public void addProduct() throws InterruptedException {
 		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
 		maximize();
@@ -65,7 +58,6 @@ protected WebDriver driver;
 	                 .clickViewCart();
 	  default_content();	
 	  sleep();
-	 	
 	}
 	
 	public void remove() throws InterruptedException {
@@ -75,9 +67,7 @@ protected WebDriver driver;
 	        .clickRemove();
 	 default_content();	
 	}
-	
-	
-	
+
 	public void login_Filldata() throws InterruptedException {
 		sleep();
 		loginpage.sendEmail("roxanaioana2597@gmail.com")
@@ -93,6 +83,7 @@ protected WebDriver driver;
 		  .clickGo();
 		   sleep();
 	}	
+	
 	public void addNote() throws InterruptedException {
 		  detailsStiletto.driverrSwitch()
 		                .clickSize()
@@ -112,6 +103,7 @@ protected WebDriver driver;
 				         sleep();
 			        cart.driverrSwitchCart();	
 		} 
+	
 	public void payPal() throws InterruptedException {
 		//gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
 		//maximize();
@@ -140,5 +132,11 @@ protected WebDriver driver;
 		gotoUrl("https://ancabota09.wixsite.com/internship");
 		maximize();
 	}	
+	
+	  public void fillcontact(String name, String email, String phone) {
+			homePageStiletto.sendName(name)
+				.sendEmail(email)
+				.sendPhone(phone);
+	 }
 }
 

@@ -68,6 +68,7 @@ import org.openqa.selenium.support.PageFactory;
 	//////////////  Actions ///////////
 	public HomePageStiletto sendName( String value) {
 		sendKeys(name, value);
+		status(INFO, "Name:" + value);
 		return this;
 	}
 	

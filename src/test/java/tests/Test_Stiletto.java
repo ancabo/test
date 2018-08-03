@@ -27,8 +27,13 @@ public class Test_Stiletto extends TestBase{
 		}
 	
 	@Test
-	public void test() throws InterruptedException{
+	public void test_Stiletto() throws InterruptedException{
 	key.fillContact();
+	homePageStiletto.clickSend();
+	Assert.assertTrue(check.checkContact(), "ERROR");
+	homePageStiletto.driverSwitch()
+	                .clickPantofi();
+	default_content();
 	key.addProduct();
 	key.remove();
 	sleep();
@@ -37,8 +42,9 @@ public class Test_Stiletto extends TestBase{
 	Assert.assertTrue(check.checkCart(), "ERROR");
     default_content();
     Assert.assertTrue(check.check_messageCart(), "ERROR");
+    sleep();
+    cart.clickContinuebutton();
     default_content();
-    cart.clickContinuebutton().clickPantofi(); 
 	}
 }
 

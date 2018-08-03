@@ -1,10 +1,8 @@
 package tests;
 
 import org.testng.Assert;
-//import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import testautomation.Cart;
 import testautomation.CheckKey;
 import testautomation.DetailsStiletto;
@@ -26,15 +24,13 @@ public class Test_MyCart extends TestBase{
 			cart = new Cart(driver);
 			key = new KeyWord(driver);
 			check= new CheckKey(driver);
-			}
+		}
 		
-
 		@Test
 		public void testAddNote() throws InterruptedException{
-			status("PASS","START TEST");
-			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-			maximize();
-			key.addNote();
+			key.addProduct();
+			cart.driverrSwitchCart();
+			sleep();
 			cart.clickAddNote();
 		    sleep();
 		    cart.sendNote();
@@ -42,13 +38,10 @@ public class Test_MyCart extends TestBase{
 			Assert.assertTrue(check.checkAddtNote(),"Verification Failed: Message is missing!");
 		}
 		
-		
 		@Test
 		public void testPromoCode() throws InterruptedException{
-			status("PASS","START TEST");
-			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-			maximize();
-			key.addNote();
+			key.addProduct();
+			cart.driverrSwitchCart();
 			sleep();
             cart.clickPromoCode();
 		    sleep();
@@ -61,13 +54,13 @@ public class Test_MyCart extends TestBase{
 		
 		@Test
 		public void testPayPal() throws InterruptedException{
-			gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-			maximize();
-			key.payPal();
+			key.addProduct();
+			cart.driverrSwitchCart();
+			sleep();
+			default_content();
 			Assert.assertTrue(check.checkPayPal() ,"Verification Failed: Message is missing!");	
-			//Assert.assertTrue(check.check_Checkout(),"Verification Failed: Message is missing!");
+			sleep();
+			default_content();
+			Assert.assertTrue(check.check_Checkout(),"Verification Failed: Message is missing!");
 		}
-		
-		
-
 }

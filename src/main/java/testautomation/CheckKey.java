@@ -158,14 +158,13 @@ public class CheckKey extends TestBase{
 			}
 			
 			public boolean  checkAddtoCart() throws InterruptedException {
-				 sleep();
+				sleep();
 				detailsStiletto.driverrSwitch();
 				sleep();
-				 String CheckButton =  detailsStiletto.getTextAddCart(); 
-				 System.out.println("Butonul este pe pagina:" + CheckButton);
+				String CheckButton =  detailsStiletto.getTextAddCart(); 
+				System.out.println("Butonul este pe pagina:" + CheckButton);
 				if (CheckButton.equals("ADD TO CART")) {
 					 status("PASS", "Mesajul apare: ADD TO CART.");
-					// System.out.println(" True" + CheckButton);
 					 return true;
 					} else {
 					status("FAIL", "Mesajul nu apare: ADD TO CART.");
@@ -174,11 +173,11 @@ public class CheckKey extends TestBase{
 			 }
 			 
 			public boolean checkAddtNote() throws InterruptedException {
-				 sleep();
+				sleep();
 				cart.driverrSwitchCart();
 				sleep();
-				 String CheckAddNote =  cart.getTextAddNote(); 
-				 System.out.println("Butonul este pe pagina:" + CheckAddNote);
+				String CheckAddNote =  cart.getTextAddNote(); 
+				System.out.println("Butonul este pe pagina:" + CheckAddNote);
 				if (CheckAddNote.equals("Add a note")) {
 					 status("PASS", "Mesajul apare: Add a note.");
 					 return true; 
@@ -193,8 +192,8 @@ public class CheckKey extends TestBase{
 					boolean ok;
 					cart.driverrSwitchCart();
 					sleep();
-					 String CheckPromoCode =  cart.getTextPromoCode(); 
-					 System.out.println("Butonul este pe pagina:" + CheckPromoCode);
+					String CheckPromoCode =  cart.getTextPromoCode(); 
+					System.out.println("Butonul este pe pagina:" + CheckPromoCode);
 					if (CheckPromoCode.equals("Enter a promo code")) {
 						 status("PASS", "Mesajul apare: Enter a promo code.");
 						 ok=true;
@@ -212,8 +211,8 @@ public class CheckKey extends TestBase{
 				    boolean ok;
 					cart.driverrSwitchCart();
 					sleep();
-					 String CheckMessagePayPal =  cart.getTextcheckPay(); 
-					 System.out.println("Butonul este pe pagina:" + CheckMessagePayPal);
+					String CheckMessagePayPal =  cart.getTextcheckPay(); 
+					System.out.println("Butonul este pe pagina:" + CheckMessagePayPal);
 					if (CheckMessagePayPal.equals("Check out with")) {
 						 status("PASS", "Mesajul apare: Check out with");
 						 ok=true;
@@ -227,7 +226,7 @@ public class CheckKey extends TestBase{
 			 
 			 public boolean check_Checkout() throws InterruptedException {
 					sleep();
-					cart.driverSwitchCart();
+					cart.driverrSwitchCart();
 					sleep();
 					String actual_message =cart.getMessageTitle();
 					if (actual_message.equals("Checkout")){

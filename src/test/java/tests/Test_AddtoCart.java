@@ -19,17 +19,14 @@ public class Test_AddtoCart extends TestBase {
 	
 	@BeforeMethod
 	public void beforeMTD() {
-		key = new KeyWord(driver);
-		check= new CheckKey(driver);
-		}
+	  key = new KeyWord(driver);
+	  check= new CheckKey(driver);
+	}
 	
 	@Test
 	public void testAddtoCart() throws InterruptedException{
-	gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-	maximize();
-	key.addProduct();
-	Assert.assertTrue(check.checkAddtoCart(),"Error");
-    //check.check_Checkout();
-    //Assert.assertTrue(check.check_Checkout(),"Verification Failed: Message is missing!");
+	 key.addProduct();
+	 Assert.assertTrue(check.checkAddtoCart(),"Error"); 
+	 default_content();
 	}
 }

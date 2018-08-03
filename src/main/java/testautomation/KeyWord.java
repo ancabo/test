@@ -55,16 +55,15 @@ protected WebDriver driver;
       sleep();
 	  detailsStiletto.driverrrSwitch()
 	                   .wait_frame()
-	                // .wait_viewcart()
 	                 .clickViewCart();
-	  default_content();	
+	 default_content();	
 	  sleep();
 	}
+	
 	
 	public void remove() throws InterruptedException {
 		cart.driverSwitchCart()
 	        .waitt()
-	       // .wait_remove()
 	        .clickRemove();
 	 default_content();	
 	}
@@ -85,27 +84,8 @@ protected WebDriver driver;
 		   sleep();
 	}	
 	
-	public void addNote() throws InterruptedException {
-		  detailsStiletto.driverrSwitch()
-		                .clickSize()
-		                .clickSelectSize()
-		                .clickColour()
-		                .clickSelectColour()
-		                .clickQuantity()
-		                .clear_Quantity()
-		                .sendQuantity();
-			            sleep();
-	     detailsStiletto.clickAdd();
-			            default_content();
-		                sleep();
-	      detailsStiletto.driverrrSwitch()
-			            .wait_frame()
-			            .clickViewCart();	
-				         sleep();
-			        cart.driverrSwitchCart();	
-		} 
 	
-	public void payPal() throws InterruptedException {
+	/*public void payPal() throws InterruptedException {
 		//gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
 		//maximize();
 	  detailsStiletto.driverrSwitch()
@@ -127,7 +107,7 @@ protected WebDriver driver;
 	  				sleep();
 	  				//cart.clickPayPal();
 	  				default_content();	
-	}
+	}*/
 	
 	public void go_Url() {
 		gotoUrl("https://ancabota09.wixsite.com/internship");

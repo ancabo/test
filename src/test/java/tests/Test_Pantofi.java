@@ -7,6 +7,7 @@ import testautomation.TestBase;
 
 public class Test_Pantofi extends TestBase {
  PantofiStiletto pantofi= new PantofiStiletto();
+ 
 	@Test
 	public void testPantofi() throws InterruptedException
 	{

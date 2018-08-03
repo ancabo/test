@@ -56,12 +56,9 @@ import org.openqa.selenium.support.PageFactory;
     @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/section/div/div[2]/div/div[2]/button/div")
 	private WebElement checkmessagePay; 
     
-    /*@FindBy(xpath="//*[@id=\\\"root\\\"]/div/div/div/div/section/div/div[2]/div/div[2]/button")
-	private WebElement clickPayPal; */
-    
-    @FindBy(xpath="//*[contains(text(),'title')]")
+    @FindBy(xpath="[contains(text(),'title')]")
 	private WebElement checkout;
-	
+    
 ///////// Actions////////////////
 	public Cart clickRemove() {
 		  click(remove);
@@ -152,11 +149,6 @@ import org.openqa.selenium.support.PageFactory;
 		 String text=  checkmessagePay.getText();
 			return text;
 	 }
-	
-	/*public Cart clickPayPal() {
-		click(clickPayPal);
-	    return this ;
-			}*/
 	
 	public String getMessageTitle () {
 		   String text = checkout.getText();

@@ -1,10 +1,8 @@
 package tests;
 
 import java.util.concurrent.TimeUnit;
-
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import testautomation.Cart;
 import testautomation.CheckKey;
 import testautomation.DetailsStiletto;
@@ -18,9 +16,7 @@ public class Test_ClickFacebook extends TestBase {
 		Cart cart;
 		KeyWord key;
 		CheckKey check;
-
-	 
-	 
+		
 	@BeforeMethod
 	public void beforeMTD() {
 		homePageStiletto = new HomePageStiletto(driver);
@@ -30,7 +26,6 @@ public class Test_ClickFacebook extends TestBase {
 		check= new CheckKey(driver);
 		}
 	
-
 	@Test
 	public void testclickFacebook() throws InterruptedException{	
 		status("PASS","START TEST");

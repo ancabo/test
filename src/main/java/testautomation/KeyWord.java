@@ -29,7 +29,6 @@ protected WebDriver driver;
 		}
 	
 	public void fillContact() throws InterruptedException {
-		status("PASS","START TEST");
 		gotoUrl("https://ancabota09.wixsite.com/internship");
 		maximize();
 		homePageStiletto.sendName("Dodea Roxana")
@@ -77,45 +76,7 @@ protected WebDriver driver;
 	 default_content();	
 	}
 	
-	public void createAccount() throws InterruptedException {
-	   status("PASS","Start: Create account!");
-	   gotoUrl("https://ancabota09.wixsite.com/internship");
-	   maximize();
-	   homePageStiletto.clickBookOnline();
-       check.check_BookPage();
-       sleep();
-       // loginpage.switchFrame();
-        //loginpage.Wait();
-       loginpage.clickSignUp(); 
-       sleep();
-       signup .sendEmail("roxydodea597@yahoo.com")
-  			  .sendPassword("siemens2018")
-  			  .sendRetypePass("siemens2018")
-  			  .clickGo();
-  			   sleep();
-       signup.click_Xbutton();
-       default_content();
-       status("PASS","The account has been successfully created!");
-        
-	}
-
-	public void login_Account() throws InterruptedException {
-		status("PASS","START TEST");
-		gotoUrl("https://ancabota09.wixsite.com/internship");
-		maximize();
-		homePageStiletto.clickBookOnline();
-        check.check_BookPage();
-        sleep();
-        loginpage.sendEmail("roxanaioana2597@gmail.com")
-		        .sendPassword("siemens2018")
-		        .clickLogIn();
-        check.check_LoginMessage();
-        loginpage.clickForgotPass();
-        check.check_Reset();
-        loginpage.clickGobutton();
-        check.check_ConfirmPage();
-        status("PASS","END OF TEST");
-	}
+	
 	
 	public void login_Filldata() throws InterruptedException {
 		sleep();
@@ -131,26 +92,7 @@ protected WebDriver driver;
 		  .sendRetypePass("siemens2018")
 		  .clickGo();
 		   sleep();
-	}
-	
-	/*public void clickFacebook() throws InterruptedException {
-		status("PASS","START TEST");
-		gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
-		maximize();
-detailsStiletto.driverrSwitch();
-		sleep();
-detailsStiletto.clickFacebook();
-		sleep();
-try {
-     TimeUnit.SECONDS.sleep(10);
-} catch (InterruptedException e) {
-    //Handle exception
-}
-//detailsStiletto.driverSwitchToFacebook();
-//detailsStiletto.clickLoginSiemens();
-status("PASS","END OF TEST");
-	} */
-	
+	}	
 	public void addNote() throws InterruptedException {
 		  detailsStiletto.driverrSwitch()
 		                .clickSize()
@@ -170,18 +112,6 @@ status("PASS","END OF TEST");
 				         sleep();
 			        cart.driverrSwitchCart();	
 		} 
-
-/*public void promoCode() throws InterruptedException {
-		cart.driverSwitchCart()
-            .waitt();
-		cart.clickPromoCode();
-		    sleep();
-		cart.writePromo();
-		    sleep();
-		cart.clickApplyPromo();
-		    default_content();	
-	}*/
-	
 	public void payPal() throws InterruptedException {
 		//gotoUrl("https://ancabota09.wixsite.com/internship/product-page/i-m-a-product-1");
 		//maximize();
@@ -206,5 +136,9 @@ status("PASS","END OF TEST");
 	  				default_content();	
 	}
 	
+	public void go_Url() {
+		gotoUrl("https://ancabota09.wixsite.com/internship");
+		maximize();
+	}	
 }
 

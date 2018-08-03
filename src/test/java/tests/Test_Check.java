@@ -1,11 +1,9 @@
 package tests;
 
-import static org.testng.Assert.assertTrue;
-
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
+import org.testng.asserts.SoftAssert;
 import testautomation.BookOnline;
 import testautomation.Cart;
 import testautomation.CheckKey;
@@ -25,6 +23,7 @@ public class Test_Check extends TestBase{
 	LoginPage loginpage;
 	SignUpPage signup ;
 	BookOnline bookOnline;
+	SoftAssert softAssert = new SoftAssert();
 	
 	@BeforeMethod
 	public void beforeMTD() {
@@ -47,19 +46,24 @@ public class Test_Check extends TestBase{
 	public void test_Invalid_Phone() throws InterruptedException{
 		check.verifyInvalid_phone();	
 	}
-	
 
 	@Test 
 	public void test_Mandatoryfields() throws InterruptedException{
-		check.check_Mandatoryfields();
+		key.go_Url();
+		homePageStiletto.clickSend();
+		softAssert.assertTrue(check.check_MandatoryFields(), "Mandatory fields are not visible");
+		sleep();
+		homePageStiletto.sendEmail("roxanaioana2597@gmail.com");
+		homePageStiletto.clickSend();
+		softAssert.assertTrue(check.check_Mandatory(), "Mandatory fields are not visible");
+		status("FAIL", "End of test");
+		softAssert.assertAll();
 	}
-	
 
 	@Test 
 	public void test_Account() throws InterruptedException{
 		status("PASS","START TEST");
-		gotoUrl("https://ancabota09.wixsite.com/internship");
-		maximize();
+		key.go_Url();
 		homePageStiletto.clickBookOnline();
 		Assert.assertTrue(check.check_BookPage(), "Error:Book Page is missing");
 		sleep();
@@ -70,15 +74,14 @@ public class Test_Check extends TestBase{
 		key.signup_Filldata();
 		signup.click_Xbutton();
 	    default_content();
-	    status("PASS","The account has been successfully created!");
-	 
+	    status("PASS","The account has been successfully created!"); 
 	}
 	
 	@Test 
 	public void test_LogInAccount() throws InterruptedException{
+		//LogIn Account with invalid password
 		status("PASS","START TEST");
-		gotoUrl("https://ancabota09.wixsite.com/internship");
-		maximize();
+		key.go_Url();
 		homePageStiletto.clickBookOnline();
 		Assert.assertTrue(check.check_BookPage(), "Error:Book Page is missing");
 		sleep();
@@ -91,22 +94,7 @@ public class Test_Check extends TestBase{
 	    loginpage.clickGobutton();
 	    Assert.assertTrue(check.check_ConfirmPage(), "Confirm page is not found.");
 	    loginpage.clickOK_button();
-	    status("PASS","END OF TEST");
-	    
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
+	    status("PASS","END OF TEST");	
 	}
 	
 }

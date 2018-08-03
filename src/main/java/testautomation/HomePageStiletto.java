@@ -5,16 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePageStiletto extends TestBase {
-	protected WebDriver driver;
+    public class HomePageStiletto extends TestBase {
+	    protected WebDriver driver;
 	
 	public  HomePageStiletto( WebDriver driver ) {
 		this.driver= driver;
 		PageFactory.initElements(driver, this); 	
-		
 	}
-	///////// Elements////////////////
 	
+	///////// Elements////////////////
 	@FindBy(xpath="//*[@id='field1']")
 	private WebElement name; 
 	
@@ -66,9 +65,6 @@ public class HomePageStiletto extends TestBase {
 	@FindBy(id="comp-jj67g6ye")
 	private WebElement frame_bookpage;
 	
-	
-
-	
 	//////////////  Actions ///////////
 	public HomePageStiletto sendName( String value) {
 		sendKeys(name, value);
@@ -84,54 +80,66 @@ public class HomePageStiletto extends TestBase {
 		status(INFO, "Email Value:" + value);
 		return this;
 	}
+	
 	public HomePageStiletto sendSubject( String value) {
 		sendKeys(subject, value);
 		status(INFO, "Subject Value:" + value);
 		return this;
 	}
+	
 	public HomePageStiletto sendMessage( String value) {
 		sendKeys(message, value);
 		status(INFO, "Message Value:" + value);
 		return this;
 	}
+	
 	public HomePageStiletto sendAddress( String value) {
 		sendKeys(address, value);
 		status(INFO, "Adress Value:" + value);
 		return this;
 	}
+	
 	public HomePageStiletto sendPhone( String value) {
 		sendKeys(phone,value);
 		status(INFO, "Phone Number:" + value);
 		return this;
 	}
+	
 	public HomePageStiletto clickSend() {
 		click(send);
 		return this;
 	}
+	
 	public HomePageStiletto driverSwitch() {
 		driver_Switch(pantof_frame);
 		return this;
 	}
+	
 	public DetailsStiletto clickPantofi() {
 		click(pantofi);
 		return new DetailsStiletto(driver);
 	}
+	
 	public String getTextcheck() {
 		String text=  checkmessage.getText();
 		return text;
 	}
+	
 	public String getMessageEmail() {
 		String text=  email_message.getText();
 		return text;
 	}
+	
 	public String getMessagePhone() {
 		 String text=  phone_message.getText();
 		 return text;
 	}
+	
 	public String getMessageMandatory() {
 		 String text= mandatory_message.getText();
 		 return text;
 	}
+	
 	public HomePageStiletto clickBookOnline() {
 		click(bookOnline_button);
 		return this;
@@ -140,22 +148,7 @@ public class HomePageStiletto extends TestBase {
 	public HomePageStiletto driverSwitchBook() {
 		driver_Switch(frame_bookpage);
 		return this;
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}		
 }
 
 

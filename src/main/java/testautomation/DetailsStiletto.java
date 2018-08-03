@@ -5,16 +5,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DetailsStiletto extends TestBase {
-	protected WebDriver driver;
+    public class DetailsStiletto extends TestBase {
+	    protected WebDriver driver;
 	
 	public  DetailsStiletto( WebDriver driver ) {
 		this.driver= driver;
 		PageFactory.initElements(driver, this); 	
-		}
+	}
 	
 ///////// Elements////////////////
-	
 	@FindBy(id="TPAMultiSection_jj67gcjeiframe")
 	private WebElement frame_meniu; 
 	
@@ -36,42 +35,27 @@ public class DetailsStiletto extends TestBase {
 	@FindBy(xpath="//*[@class='button-primary is-button-wide button-add-to-cart']")
 	private WebElement add_toCart; 
 	
-	
     @FindBy(xpath="//div[@id='WIX_ADS']/following-sibling::div//iframe ")
     private WebElement frame_cart; 
 
-   @FindBy(xpath="/html/body/cart-popup/div[2]/footer/a")
-   private WebElement viewCart; 
+    @FindBy(xpath="/html/body/cart-popup/div[2]/footer/a")
+    private WebElement viewCart; 
    
-   @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[1]/div[1]/div")
-   private WebElement checkCart; 
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[1]/div[1]/div")
+    private WebElement checkCart; 
 	
-   @FindBy(xpath=" //div[@id='q14ikinlineContent']//iframe[@title='Cart Page']")
-   private WebElement cart_frame; 
+    @FindBy(xpath=" //div[@id='q14ikinlineContent']//iframe[@title='Cart Page']")
+    private WebElement cart_frame; 
   
-   @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/span")
-   private WebElement emptymessage; 
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/div/div/div[1]/div/div/div/div[3]/span")
+    private WebElement emptymessage; 
    
-   @FindBy(xpath="//*[@class='button-primary is-button-wide button-add-to-cart']")
-   private WebElement checkbutton; 
+    @FindBy(xpath="//*[@class='button-primary is-button-wide button-add-to-cart']")
+    private WebElement checkbutton; 
    
-   @FindBy(xpath="/html/body/product-page/div/section/div/div[2]/social-networks/ul/li[1]/a")
+    @FindBy(xpath="/html/body/product-page/div/section/div/div[2]/social-networks/ul/li[1]/a")
 	private WebElement buttonFacebook; 
    
-   /*@FindBy(xpath="//*[@id=\"facebook\"]")
-	private WebElement paginanouaFacebook; */
-   
-	
-  /* @FindBy(xpath="//*[@id=\"content-zone\"]")
-  	private WebElement driverSwitchtoFacebook; 
-	
-   @FindBy(xpath="//*[@id=\"portlet_windows\"]/div[3]/form/div[2]/a/span/span")
- 	private WebElement clickLogin; */
-   
-   
-   
-	
-	
 //////////////Actions ///////////
 	public DetailsStiletto clickSize() {
 		  click(size);
@@ -116,7 +100,7 @@ public class DetailsStiletto extends TestBase {
 	public DetailsStiletto driverrSwitch() {
 		driver_Switch(frame_meniu);
 		return this;
-	}
+	    }
 	
 	public DetailsStiletto clickViewCart() {
 		  click(viewCart);
@@ -126,7 +110,7 @@ public class DetailsStiletto extends TestBase {
 	public DetailsStiletto driverrrSwitch() {
 		driver_Switch(frame_cart);
 		return this;
-	   }
+	    }
 	
 	public DetailsStiletto wait_frame() throws InterruptedException {
 		waait(viewCart,"/html/body/cart-popup/div[2]/footer/a ");
@@ -136,38 +120,21 @@ public class DetailsStiletto extends TestBase {
 	public DetailsStiletto wait_viewcart() throws InterruptedException {
 		waitt(viewCart);
 		return this; 	
-	}
+	    }
 	
 	public String getTextAddCart () {
 		   String text = checkbutton.getText();
 			return text;
-			}
+	    }
 	
 	public DetailsStiletto wait_checkAdd() throws InterruptedException {
 		waitt(checkbutton);
 		return this; 	
-	}
+	    }
 	
 	public DetailsStiletto clickFacebook() {
 		  click(buttonFacebook);
 		  return this;
 		}
-	
-	/*public DetailsStiletto waitPaginaNoua() {
-		  click(paginanouaFacebook);
-		  return this;
-		}*/
-	
-	/*public DetailsStiletto driverSwitchToFacebook() {
-		driver_Switch(driverSwitchtoFacebook);
-		return this;
-	}
-	
-	public DetailsStiletto clickLoginSiemens() {
-		  click(clickLogin);
-		  return this;
-		}*/
-	
-	
 }
 

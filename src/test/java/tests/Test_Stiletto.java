@@ -1,17 +1,14 @@
 package tests;
 
-
-//import org.testng.Assert;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import testautomation.Cart;
 import testautomation.CheckKey;
 import testautomation.DetailsStiletto;
 import testautomation.HomePageStiletto;
 import testautomation.KeyWord;
 import testautomation.TestBase;
-
 
 public class Test_Stiletto extends TestBase{
 	HomePageStiletto homePageStiletto;
@@ -34,11 +31,14 @@ public class Test_Stiletto extends TestBase{
 	key.fillContact();
 	key.addProduct();
 	key.remove();
-    check.checkCart();
-    check.check_messageCart();
+	sleep();
+	cart.driverrSwitchCart();
+	cart.wait_cart();
+	Assert.assertTrue(check.checkCart(), "ERROR");
+    default_content();
+    Assert.assertTrue(check.check_messageCart(), "ERROR");
+    default_content();
     cart.clickContinuebutton().clickPantofi(); 
 	}
-	
-	
 }
 

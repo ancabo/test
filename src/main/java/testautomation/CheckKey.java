@@ -28,33 +28,30 @@ public class CheckKey extends TestBase{
 	 public void  checkContact() throws InterruptedException {
 			Thread.sleep(2000);
 		    String CheckMessage = homePageStiletto.getTextcheck();
-		    softAssert.assertTrue(CheckMessage.contains("Your details were  successfuly!"), "Details were not successfully");
+		   Assert.assertTrue(CheckMessage.contains("Your details were sent successfuly!"), "Details were not successfully");
 			status("PASS", "Mesajul apare.");
-//			if (homePageStiletto.getCheckMessage().isEnabled() && CheckMessage.contains("Your details were sent successfully!")) {
-//				status("PASS", "Mesajul apare.");
-//			}
-//			else {
-//				status("FAIL", "Mesajul nu apare.");
-//			}
-			softAssert.assertAll();
+
 			}
-	 public void  checkCart() throws InterruptedException {
-		 sleep();
-		 cart.driverrSwitchCart();
-		 cart.wait_cart();
-		  String CheckCart = cart.getTextCart();
+	 
+	 public boolean checkCart() throws InterruptedException {
+		 boolean ok;
+		 String CheckCart = cart.getTextCart();
 		 CheckCart= CheckCart.replaceAll("[^\\d.]", "");
 		 System.out.println("Stringul este:" + CheckCart);
 		if (CheckCart.equals("0")) {
 			 status("PASS", "Cosul este gol.");
-			} else {
+			 ok=true;
+			 return ok;
+			} 
+		else {
 			 status("FAIL", "Cosul nu s-a golit.");
-
+			 ok= false;
+			 return ok;
 			}
-
-		 default_content();
 	 }
-	 public void  check_messageCart() throws InterruptedException {
+	 
+	 public boolean check_messageCart() throws InterruptedException {
+		 boolean ok;
 		 sleep();
 		 cart.driverrSwitchCart();
 		 cart.wait_cart();
@@ -62,13 +59,14 @@ public class CheckKey extends TestBase{
 		 System.out.println("Stringul este:" + MessageCart);
 		if (MessageCart.equals("Cart is empty")) {
 			 status("PASS", "Mesajul apare:Cart is empty.");
-			} else {
+			 ok=true;
+			 return ok;
+			} 
+		else {
 			 status("FAIL", "Mesajul nu apare.");
-
+			 ok = false;
+			 return ok;
 			}
-
-		 default_content();
-		 status("PASS","END OF TEST");
 	 }
 	 
 	 public void checkEmail_invalid() throws InterruptedException {
@@ -91,72 +89,44 @@ public class CheckKey extends TestBase{
 		   softAssert.assertAll();
 		  status("PASS","END OF TEST");
 			 }	
-	 public void verifyInvalid_phone() throws InterruptedException {
-			gotoUrl("https://ancabota09.wixsite.com/internship");
-			maximize();
-			homePageStiletto.sendName("Dodea Roxana")
-				.sendEmail("roxanaioana2597@gmail.com")
-				.sendPhone("0757??abcds_=")
-				.sendAddress("Strada Principala nr 680B")
-				.sendSubject("Pantofi")
-				.sendMessage("Marimile corespund?")
-			    .clickSend();
-			Thread.sleep(2000);
-			String expected_message = "Please provide a valid phone";
-			String actual_message =homePageStiletto.getMessagePhone();
-			try {
-				Assert.assertEquals(actual_message, expected_message);
-				status("PASS","Numeric field PHONE doesn't accept ALPHABETS and CHARACTERS!");
-			}catch(AssertionError e) {
-				status("FAIL","Numeric field PHONE accept ALPHABETS and CHARACTERS!");
-			}
-	 }
-			public void check_Mandatoryfields() throws InterruptedException {
+		 
+		     public void verifyInvalid_phone() throws InterruptedException {
 				gotoUrl("https://ancabota09.wixsite.com/internship");
 				maximize();
-				homePageStiletto.clickSend();
-				//verificam daca atunci cand nu completam cu date apare mesajul pentru campurile care trebuie completate obligatoriu
-				String expected_message = "	Please fill in all required fields.";
+				homePageStiletto.sendName("Dodea Roxana")
+					.sendEmail("roxanaioana2597@gmail.com")
+					.sendPhone("0757??abcds_=")
+					.sendAddress("Strada Principala nr 680B")
+					.sendSubject("Pantofi")
+					.sendMessage("Marimile corespund?")
+				    .clickSend();
+				Thread.sleep(2000);
+				String expected_message = "Please provide a valid phone";
 				String actual_message =homePageStiletto.getMessagePhone();
-				System.out.println("Stringul este: " + actual_message);
 				try {
 					Assert.assertEquals(actual_message, expected_message);
-					status("PASS","Mandatory fields are visible.");
+					status("PASS","Numeric field PHONE doesn't accept ALPHABETS and CHARACTERS!");
 				}catch(AssertionError e) {
-					status("FAIL","Mandatory fields are not visible");
-				}
-				sleep();
-				// verificam daca atunci cand introducem emailul valid apare mesajul pentru campurile completate obligatoriu
-				homePageStiletto.sendEmail("roxanaioana2597@gmail.com");
-				homePageStiletto.clickSend();
-				sleep();
-				String actual_messagefields =homePageStiletto.getMessageMandatory();
-				String expected= "Please fill in all required fields.";
-				System.out.println("Stringul este"+ actual_messagefields);
-				try {
-					Assert.assertEquals(actual_messagefields, expected);
-					status("PASS","Mandatory fields are visible and selected!");
-				}catch(AssertionError e) {
-					status("FAIL","Mandatory fields are not visible");
-				}
-			
-			}
-			
+					status("FAIL","Numeric field PHONE accept ALPHABETS and CHARACTERS!");
+					}
+		 }
+
 			public boolean check_BookPage() throws InterruptedException {
 				sleep();
-				boolean ok ;
+				boolean ok;
 				bookOnline.driverSwitchb();
 				sleep();
 				String actual_message =bookOnline.getMessageTitle();
 			    if (actual_message.equals("Nothing to book right now. Check back soon.")) {
 			    	status("PASS","Welcome!Book Page is displayed.");
-			        return ok=true ;
+			    	ok=true;
+			        return ok ;
 			    }
 			    else {
 			    	status("FAIL","Error:Book Page is missing");
-			    	return ok=false;
+			    	ok=false;
+			    	return ok;
 			    }
-				
 			}
 		   
 			public boolean check_LoginMessage() throws InterruptedException {
@@ -191,6 +161,7 @@ public class CheckKey extends TestBase{
 			    	return ok;
 			    }							
 			}
+			
 			public boolean check_ConfirmPage() throws InterruptedException {
 				sleep();
 				boolean ok;
@@ -240,8 +211,6 @@ public class CheckKey extends TestBase{
 					}
 			 }
 			 
-			 
-			 
 			 public boolean  checkPromoCode() throws InterruptedException {
 					sleep();
 					boolean ok;
@@ -251,14 +220,14 @@ public class CheckKey extends TestBase{
 					 System.out.println("Butonul este pe pagina:" + CheckPromoCode);
 					if (CheckPromoCode.equals("Enter a promo code")) {
 						 status("PASS", "Mesajul apare: Enter a promo code.");
-						 return ok=true;
-						} else {
+						 ok=true;
+						 return ok;
+						} 
+					else {
 						 status("FAIL", "Mesajul nu apare.");
-						 return ok=false;
-
-						}
-					 //default_content();
-					// status("PASS","END OF TEST");
+						 ok=false;
+						 return ok;
+					}
 				 }
 			 
 			 public boolean checkPayPal() throws InterruptedException {
@@ -270,27 +239,61 @@ public class CheckKey extends TestBase{
 					 System.out.println("Butonul este pe pagina:" + CheckMessagePayPal);
 					if (CheckMessagePayPal.equals("Check out with")) {
 						 status("PASS", "Mesajul apare: Check out with");
-						 return ok=true; 
+						 ok=true;
+						 return ok; 
 						} else {
 						 status("FAIL", "Mesajul nu apare.");
-						 return ok=false;
+						 ok=false;
+						 return ok;
 						}
-			 } 
+			     } 
 			 
 			 public boolean check_Checkout() throws InterruptedException {
 					sleep();
-					boolean ok;
 					cart.driverSwitchCart();
 					sleep();
 					String actual_message =cart.getMessageTitle();
 					if (actual_message.equals("Checkout")){
 						status("PASS","Checkout is displayed.");
-						return ok=true;	
+						return  true;	
 					} else {
 						status("FAIL","Error:Checkout is missing");
-						return ok=false;
+						return false;
 					}										
-				} 
- 
-	 
+				}
+			 
+			 public boolean check_MandatoryFields()  {		
+			        boolean ok ;
+					//verificam daca atunci cand nu completam cu date apare mesajul pentru campurile care trebuie completate obligatoriu
+					String expected_message = "	Please fill in all required fields.";
+					String actual_message =homePageStiletto.getMessagePhone();
+					System.out.println("Stringul este: " + actual_message);
+					 if (actual_message.equals(expected_message)) {
+					 status("PASS","Mandatory fields are visible and selected!");
+							ok=true;
+					        return ok ;
+					    }
+					    else {
+					    	status("FAIL","Mandatory fields are not visible!");
+					    	ok=false;
+					    	return ok;
+					    }	  
+				 }
+			 
+			 public boolean check_Mandatory()  {		
+			        boolean ok ;
+					String actual_messagefields =homePageStiletto.getMessageMandatory();
+					String expected= "Please fill in all required fields.";
+					System.out.println("Stringul este"+ actual_messagefields);
+					 if (actual_messagefields.equals(expected)) {
+					 status("PASS","Mandatory fields are visible and selected!");
+							ok=true;
+					        return ok ;
+					    }
+					    else {
+					    	status("FAIL","Mandatory fields are not visible!");
+					    	ok=false;
+					    	return ok;
+					    }	  
+			     }
 }

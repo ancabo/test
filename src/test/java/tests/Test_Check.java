@@ -89,7 +89,7 @@ public class Test_Check extends TestBase{
 	    status("PASS","The account has been successfully created!"); 
 	}
 	
-	@Test 
+    /* @Test 
 	public void test_LogInAccount() throws InterruptedException{
 		//LogIn Account with invalid password
 		key.go_Url();
@@ -106,6 +106,6 @@ public class Test_Check extends TestBase{
 	    Assert.assertTrue(check.check_ConfirmPage(), "Confirm page is not found.");
 	    loginpage.clickOK_button();
 	}
-	
+	*/
 }
 	

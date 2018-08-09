@@ -38,7 +38,7 @@ public class Test_MyCart extends TestBase{
 			Assert.assertTrue(check.checkAddtNote(),"Verification Failed: Message is missing!");
 		} */
 		
-		@Test
+		/*@Test
 		public void testPromoCode() throws InterruptedException{
 			key.addProduct();
 			cart.driverrSwitchCart();
@@ -50,7 +50,7 @@ public class Test_MyCart extends TestBase{
 		    cart.clickApplyPromo();
 		    default_content();
 			Assert.assertTrue(check.checkPromoCode() ,"Verification Failed: Message is missing!");
-		}
+		}*/
 		
 		/* @Test
 		public void testPayPal() throws InterruptedException{
